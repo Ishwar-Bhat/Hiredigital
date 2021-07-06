@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %} List Products {% endblock title %}
+
+{% block content %}
+{% for item in product_list %}
+<figure>
+    <img src="{{item.product_image}}" alt="{{item.product_name}}">
+    <figcaption>{{item.product_name}}</figcaption>
+    <span class="price">{{item.selling_price}}</span><br/>
+    <span class="price"><strike>{{item.product_price}}</strike></span>
+    <a class="button" href="{% url 'product-detail' item.product_id %}">Details</a>
+</figure>
+{% endfor %}
+{% endblock content %}

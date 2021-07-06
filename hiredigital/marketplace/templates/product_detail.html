@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% load rest_framework %}
+{% block extrahead %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+{% endblock extrahead %}
+{% block title %} Product Detail{% endblock title %}
+
+{% block content %}
+<h1>Profile - {{ product.product_name }}</h1>
+<form action="{% url 'product-detail' pk=product.pk %}" method="POST">
+    {% csrf_token %}
+    <img src="{{product.product_image}}" alt="{{product.product_name}}">
+    {% render_form serializer %}
+    <input type="submit" value="Save">
+</form>
+{% endblock content %}
